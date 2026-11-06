@@ -274,6 +274,11 @@ git log -p -- config.js
 ### Partie 6 — Réflexion
 
 15. Pourquoi est-il important de **taguer** des versions dans un projet ?  
+
+Pour marquer une version stable d'un projet avec un nom compréhensible au lieu d'un simple numéro de commit.
+
 16. Que peut-on déduire du style de travail de l'équipe à partir de cet historique GIT ?  
+
+Les branches sont bien séparées, etc
 
 Bonne chance, et surtout... **ne vous perdez pas dans le log !** 😉
