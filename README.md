@@ -34,11 +34,17 @@ https://github.com/ETML-RRY/324_inspection_git.git
 
 1. Combien de branches existent dans le dépôt ? Citez-les.  
 ```bash
- git branch
+ git branch -a
 ``` 
 résultat:
 
->"* main"
+>"* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/experiment/dark-mode
+  remotes/origin/feature/header
+  remotes/origin/feature/login
+  remotes/origin/hotfix/typo
+  remotes/origin/main"
 
 2. Quels sont les **tags** disponibles ? A quoi correspondent-ils ?  
 ```bash
@@ -145,7 +151,29 @@ résultat:
 ### Partie 4 — Branches et fusions
 
 9. Quelles branches ont été fusionnées dans `main` ?  
+
+```bash
+git branch -a --merged main
+```
+
+> * main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/feature/header
+  remotes/origin/feature/login
+  remotes/origin/hotfix/typo
+  remotes/origin/main
+
+
 10. Quelle branche **n'a pas été fusionnée** ? Pourquoi, selon vous ? 
+
+```bash
+git branch -a --no-merged main
+```
+résultat:
+
+>  remotes/origin/experiment/dark-mode
+
+Je suppose que vu que cette fonctionnalité est dans une branche qui s'appelle "experiment", cette fonctionnalité n'a pas été accomplit, et n'a pas été mergé dans la main.
 
 ### Partie 5 — Analyse du contenu
 
