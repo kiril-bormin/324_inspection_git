@@ -177,10 +177,99 @@ Je suppose que vu que cette fonctionnalité est dans une branche qui s'appelle "
 
 ### Partie 5 — Analyse du contenu
 
-11. Quelle est la **différence principale** entre les fichiers `index.html` dans les versions `v0.1` et `v0.2` et quelle commande permet de le voir rapidement ?  
+11. Quelle est la **différence principale** entre les fichiers `index.html` 
+dans les versions `v0.1` et `v0.2` et quelle commande permet de le voir rapidement ?
+
+```bash
+git diff v0.1 v0.2 -- index.html
+```
+
+résultat:
+
+```html diff --git a/index.html b/index.html
+index 2019876..60ce2f7 100644
+--- a/index.html
++++ b/index.html
+@@ -6,6 +6,7 @@
+   <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
++  <header><nav><a href="/">Accueil</a> | <a href="#">Contact</a></nav></header>
+   <!-- NOTE HISTORIQUE: ancien slogan modifié plusieurs fois -->
+   <h1>Bienvenue sur notre site Wolrd!</h1>
+   <p id="tagline">Un site tout simple pour apprendre Git.</p>
+```
+
 12. Que contient la branche `feature/login` ?  
-13. Dans quelle branche a été ajouté le code pour le **mode sombre** ?  
+
+```bash
+git show origin/feature/login
+```
+
+résultat: 
+
+```bash
+commit 74cc148bf664c82b26a8bf5643c49f7bea1d58a9 (origin/feature/login)
+Author: Romain Rosay <romain.rosay@eduvaud.ch>
+Date:   Wed Nov 5 22:15:14 2025 +0100
+
+    feature(login): ajoute page de connexion et pseudo-fonction JS
+
+diff --git a/login.html b/login.html
+new file mode 100644
+index 0000000..ff96acb
+--- /dev/null
++++ b/login.html
+@@ -0,0 +1,13 @@
++<!doctype html>
++<html lang="fr">
++<head><meta charset="utf-8"><title>Connexion</title></head>
++<body>
++  <h1>Connexion</h1>
++  <form>
++    <label>Email <input type="email"></label>
++    <label>Mot de passe <input type="password"></label>
++    <button type="submit">Se connecter</button>
++  </form>
++  <!-- TODO: validation côté client -->
++</body>
++</html>
+diff --git a/script.js b/script.js
+index d6ab491..0234cd0 100644
+--- a/script.js
++++ b/script.js
+@@ -4,3 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
+   if (p) p.textContent += " (v0)";
+   // TODO: extraire ce message depuis config.js plus tard
+ });
++
++// TODO: branch login - gérer la soumission
++function fakeLogin(email) {
++  return email && email.includes('@');
++}
+```
+
+13. Dans quelle branche a été ajouté le code pour le **mode sombre** ? 
+
+On regarde les branches existantes afin de réperer une qui contient le mode sombre -> 
+
+```bash
+git branch -a
+```
+
+résultat :
+
+> remotes/origin/experiment/dark-mode
+
 14. Quelle bonne pratique de sécurité est évoquée dans les commits du fichier `config.js` ?
+
+```bash
+git log -p -- config.js
+```
+
+-// Configuration (ne doit PAS contenir de secrets en prod)
+-export const API_KEY = 'sk_live_NE_PAS_UTILISER_abc123xyz';
++// (clé API retirée; utiliser des variables d'environnement)
 
 ### Partie 6 — Réflexion
 
