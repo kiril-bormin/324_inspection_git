@@ -33,8 +33,51 @@ https://github.com/ETML-RRY/324_inspection_git.git
 ### Partie 2 — Exploration de base
 
 1. Combien de branches existent dans le dépôt ? Citez-les.  
+```bash
+ git branch
+``` 
+résultat:
+
+>"* main"
+
 2. Quels sont les **tags** disponibles ? A quoi correspondent-ils ?  
+```bash
+ git tag
+```
+résultat:
+
+>"v0.1 v0.2"
+
+Ensuite:
+
+```bash
+git log
+```
+
+ça correspond au commits :
+
+>commit 4d28bc59eee6c8f52277bf505642a0e8e3595674 **(tag: v0.1)**
+Author: Romain Rosay <romain.rosay@eduvaud.ch>
+Date:   Wed Nov 5 22:15:09 2025 +0100
+
+>Initial commit: structure HTML/CSS/JS + README + docs
+
+et
+
+>commit 5d66c29ef71dcd9f8e91794bf4c8591a9a56823d **(tag: v0.2)**
+Merge: 1b682c9 6b6d950
+Author: Romain Rosay <romain.rosay@eduvaud.ch>
+Date:   Wed Nov 5 22:15:18 2025 +0100
+
+>merge(feature/header): intègre la navigation
+
 3. Quelle est la **branche principale** du projet ?
+```bash
+git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+```
+résultat:
+
+> main
 
 ### Partie 3 — Historique et commits
 
